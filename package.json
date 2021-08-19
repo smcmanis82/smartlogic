@@ -1,0 +1,22 @@
+{
+  "name": "smartlogic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive './test/*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smcmanis82/smartlogic.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smcmanis82/smartlogic/issues"
+  },
+  "homepage": "https://github.com/smcmanis82/smartlogic#readme",
+  "dependencies": {
+    "mocha": "^9.0.3"
+  }
+}
