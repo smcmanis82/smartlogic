@@ -1,9 +1,9 @@
 // read three text files
 
 // read one file and transform it into array
-function readCommaFile() {
+function readTextFile(fileName) {
     var fs = require("fs");
-    var text = fs.readFileSync("./data/comma.txt").toString();
+    var text = fs.readFileSync(fileName).toString();
     var textByLine = text.split("\n");
     return textByLine;
 }
@@ -21,13 +21,6 @@ function commaStringsToObject(stringList) {
         }
     })
     return objectList
-}
-
-function readSpaceFile() {
-    var fs = require("fs");
-    var text = fs.readFileSync("./data/space.txt").toString();
-    var textByLine = text.split("\n");
-    return textByLine;
 }
 
 function spaceStringsToObject(stringList) {
@@ -53,9 +46,24 @@ function fixDateStringWithRegex(oldString) {
     return oldString.replace(/-/g, '/')
 }
 
+
+function pipeStringsToObject(stringList) {
+    let objectList = stringList.map(item => {
+        const splitString = item.split("|")
+        return {
+            lastName: splitString[0].trim(),
+            firstName: splitString[1].trim(),
+            gender: splitString[3].trim() == "F" ? "Female" : "Male",
+            favoriteColor: splitString[4].trim(),
+            dateOfBirth: fixDateStringWithDates(splitString[5])
+        }
+    })
+    return objectList
+}
+
 module.exports = {
-    readCommaFile,
+    readTextFile,
     commaStringsToObject,
-    readSpaceFile,
-    spaceStringsToObject
+    spaceStringsToObject,
+    pipeStringsToObject
 }
