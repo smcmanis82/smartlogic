@@ -30,8 +30,27 @@ function readSpaceFile() {
     return textByLine;
 }
 
-function spaceStringsToObject() {
+function spaceStringsToObject(stringList) {
+    let objectList = stringList.map(item => {
+        const splitString = item.split(" ")
+        return {
+            lastName: splitString[0],
+            firstName: splitString[1],
+            gender: splitString[3] == "F" ? "Female" : "Male",
+            favoriteColor: splitString[5],
+            dateOfBirth: fixDateStringWithDates(splitString[4])
+        }
+    })
+    return objectList
+}
 
+function fixDateStringWithDates(oldString) {
+    const newDate = new Date(oldString)
+    return `${newDate.getMonth()+1}/${newDate.getDate()}/${newDate.getFullYear()}`
+}
+
+function fixDateStringWithRegex(oldString) {
+    return oldString.replace(/-/g, '/')
 }
 
 module.exports = {

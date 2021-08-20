@@ -70,7 +70,7 @@ describe('File Reader Tests', function() {
 
     describe('spaceStringsToObject()', function() {
 
-        it('should return objects', function() {
+        it('should return objects - all female', function() {
             var input = [
                 "Kournikova Anna F F 6-3-1975 Red",
                 "Hingis Martina M F 4-2-1979 Green",
@@ -84,6 +84,39 @@ describe('File Reader Tests', function() {
                     gender: "Female", 
                     favoriteColor: "Red",
                     dateOfBirth: "6/3/1975"
+                },
+                {   
+                    lastName: "Hingis", 
+                    firstName: "Martina", 
+                    gender: "Female", 
+                    favoriteColor: "Green", 
+                    dateOfBirth: "4/2/1979"
+                },
+                {
+                    lastName: "Seles", 
+                    firstName: "Monica", 
+                    gender: "Female", 
+                    favoriteColor: "Black", 
+                    dateOfBirth: "12/2/1973"
+                }
+            ]
+            assert.deepEqual(actual, expected);
+        });
+
+        it('should return objects - mixed gender', function() {
+            var input = [
+                "Abercrombie Neil J M 2-13-1943 Tan",
+                "Hingis Martina M F 4-2-1979 Green",
+                "Seles Monica H F 12-2-1973 Black"
+            ]
+            var actual = spaceStringsToObject(input);
+            var expected = [
+                {
+                    lastName: "Abercrombie",
+                    firstName: "Neil", 
+                    gender: "Male", 
+                    favoriteColor: "Tan",
+                    dateOfBirth: "2/13/1943"
                 },
                 {   
                     lastName: "Hingis", 
