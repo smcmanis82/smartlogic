@@ -1,10 +1,8 @@
-// read three text files
+const fs = require("fs");
 
-// read one file and transform it into array
 function readTextFile(fileName) {
-  var fs = require("fs");
-  var text = fs.readFileSync(fileName).toString();
-  var textByLine = text.split("\n");
+  let text = fs.readFileSync(fileName).toString();
+  let textByLine = text.split("\n");
   return textByLine;
 }
 
@@ -30,18 +28,11 @@ function spaceStringsToObject(stringList) {
       lastName: splitString[0],
       firstName: splitString[1],
       gender: splitString[3] == "F" ? "Female" : "Male",
-      dateOfBirth: fixDateStringWithDates(splitString[4]),
+      dateOfBirth: fixDateStringWithRegex(splitString[4]),
       favoriteColor: splitString[5],
     };
   });
   return objectList;
-}
-
-function fixDateStringWithDates(oldString) {
-  const newDate = new Date(oldString);
-  return `${
-    newDate.getMonth() + 1
-  }/${newDate.getDate()}/${newDate.getFullYear()}`;
 }
 
 function fixDateStringWithRegex(oldString) {
@@ -55,7 +46,7 @@ function pipeStringsToObject(stringList) {
       lastName: splitString[0].trim(),
       firstName: splitString[1].trim(),
       gender: splitString[3].trim() == "F" ? "Female" : "Male",
-      dateOfBirth: fixDateStringWithDates(splitString[5]),
+      dateOfBirth: fixDateStringWithRegex(splitString[5].trim()),
       favoriteColor: splitString[4].trim(),
     };
   });

@@ -21,8 +21,8 @@ function sortByGender(objectList) {
 // sorted by birth date, ascending then by last name ascending
 function sortByDateOfBirth(objectList) {
   return objectList.sort(function compare(a, b) {
-    var dateA = new Date(a.dateOfBirth).getTime();
-    var dateB = new Date(b.dateOfBirth).getTime();
+    let dateA = new Date(a.dateOfBirth).getTime();
+    let dateB = new Date(b.dateOfBirth).getTime();
     if (dateA > dateB) {
       return 1;
     }
